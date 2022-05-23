@@ -20,7 +20,7 @@ import java.util.Collections;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private final String[] ALLOWED_GUEST_POST = new String[] { "/api/login" };
+    private final String[] ALLOWED_GUEST_POST = new String[] { "/api/login", "/api/hopper/calculateOrderLists" };
 
     private final UserDetailsServiceImpl userDetailsService;
 

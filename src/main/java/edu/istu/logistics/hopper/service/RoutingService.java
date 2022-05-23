@@ -6,13 +6,14 @@ import edu.istu.logistics.hopper.model.HopperDriver;
 import edu.istu.logistics.hopper.model.HopperOrder;
 import edu.istu.logistics.hopper.model.OrderList;
 import edu.istu.logistics.hopper.model.Truck;
+import org.springframework.stereotype.Service;
 
 import java.sql.Driver;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.stream.Stream;
 
-
+@Service
 public class RoutingService {
 
     private MatrixProcessor matrixProcessor;

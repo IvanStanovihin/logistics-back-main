@@ -7,9 +7,9 @@ import java.util.Collection;
 public class OrderList {
 
     private Long id;
-    private ArrayList<HopperOrder> groupedOrder;
+    private ArrayList<HopperOrder> groupedOrder = new ArrayList<>();
     private HopperDriver driver;
-    private Double summaryWeight;
+    private Double summaryWeight = 0.0;
 
 
     public OrderList() {
