@@ -56,10 +56,11 @@ public class WeightService {
     }
 
     private HopperDriver getDriver(HopperDriver[] freeDrivers){
-        HopperDriver currentDriver = null;
         if (driverCounter >= freeDrivers.length){
             driverCounter = 0;
         }
-        return freeDrivers[driverCounter];
+        HopperDriver driver = freeDrivers[driverCounter];
+        driverCounter++;
+        return driver;
     }
 }

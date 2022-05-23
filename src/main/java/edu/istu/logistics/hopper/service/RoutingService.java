@@ -17,16 +17,15 @@ import java.util.stream.Stream;
 public class RoutingService {
 
     private MatrixProcessor matrixProcessor;
-    private GreedyAlgorithmService greedyService;
     private WeightService weightService;
 
     public RoutingService(){
         this.matrixProcessor = new MatrixProcessor();
-        this.greedyService = new GreedyAlgorithmService();
         this.weightService = new WeightService();
     }
 
     public ArrayList<OrderList> calculateRoute(HopperOrder[]rawOrder, HopperDriver[] drivers){
+        GreedyAlgorithmService greedyService = new GreedyAlgorithmService();
         ArrayList<HopperOrder>points = new ArrayList<>(Arrays.asList(rawOrder));
         double[][] distanceMatrix = matrixProcessor.getDistanceMatrix(points);
         MatrixProcessor.printMatrix(distanceMatrix);

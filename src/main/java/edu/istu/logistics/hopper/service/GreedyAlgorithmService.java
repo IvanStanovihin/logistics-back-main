@@ -34,6 +34,12 @@ public class GreedyAlgorithmService {
         return sortedOrders;
     }
 
+    /**
+     * Метод возвращает индекс минимального не посещённого ранее элемента в массиве. Минимальный элемент - это
+     * точка, которую нужно следующей добавить в маршрутный лист.
+     * @param distances
+     * @return
+     */
     private int getMinDistanceIndex(double[]distances){
         int minDistanceIndex = -1;
         double minDistance = Double.MAX_VALUE;
