@@ -1,5 +1,7 @@
 package edu.istu.logistics.hopper.model;
 
+import edu.istu.logistics.configuration.ApplicationConfig;
+
 import java.sql.Driver;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -13,6 +15,7 @@ public class OrderList {
 
 
     public OrderList() {
+        this.groupedOrder.add(ApplicationConfig.START_ORDER);
     }
 
     public OrderList(Long id, ArrayList<HopperOrder> groupedOrder, HopperDriver driver, Double summaryWeight) {
@@ -20,6 +23,7 @@ public class OrderList {
         this.groupedOrder = groupedOrder;
         this.driver = driver;
         this.summaryWeight = summaryWeight;
+        this.groupedOrder.add(ApplicationConfig.START_ORDER);
     }
 
     public void addOrder(HopperOrder order){

@@ -1,5 +1,6 @@
 package edu.istu.logistics.hopper.logic;
 
+import edu.istu.logistics.configuration.ApplicationConfig;
 import edu.istu.logistics.hopper.model.HopperDriver;
 import edu.istu.logistics.hopper.model.HopperOrder;
 import edu.istu.logistics.hopper.model.OrderList;
@@ -52,6 +53,7 @@ public class WeightService {
             orderWeight = currentOrder.getCargoWeight();
         }
         orderList.setDriver(driver);
+        orderList.addOrder(ApplicationConfig.START_ORDER);
         return orderList;
     }
 
