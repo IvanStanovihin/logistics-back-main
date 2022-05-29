@@ -1,19 +1,22 @@
 package edu.istu.logistics.algorithm.branchAndBound;
 
+import org.springframework.stereotype.Service;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.text.DecimalFormat;
 import java.util.*;
 
-public class Graph {
+
+public class BranchAndBoundEngine {
     private static final int M = -1;
     private static final String SYMBOL = "M";
 
-    public void start(String path) {
+    public Stack<Integer> start(double[][] distanceMatrix) {
         long start = System.currentTimeMillis();
         Stack<Integer> stack = new Stack<>();
         System.out.println("Read graph to file:");
-        double[][] matrix = readFile(path);
+        double[][] matrix = distanceMatrix;
         double[][] clone = clone(matrix);
         List<Integer> v = new ArrayList<>();
         for (int i = 1; i <= matrix.length; i++) {
@@ -48,9 +51,12 @@ public class Graph {
         System.out.println("\nAnswer:");
         System.out.print("Path: ");
         printStack(stack);
+        Stack<Integer>resultStack = new Stack<>();
+        resultStack.addAll(stack);
         System.out.println("Sum:  " + getSum(stack, clone));
         start = System.currentTimeMillis() - start;
         System.out.printf("Spent time: %d.%s sec.;", start / 1000, new DecimalFormat("000").format(start % 1000));
+        return resultStack;
     }
 
     private double[][] clone(double[][] martrix) {
