@@ -25,15 +25,14 @@ public class MatrixProcessor {
                 if (i == j) {
                     distanceMatrix[i][j] = 0;
                 } else {
-                    String distance = getDistance(order.get(i), order.get(j));;
-                    distanceMatrix[i][j] = Float.parseFloat(distance);
+                    distanceMatrix[i][j] = getDistance(order.get(i), order.get(j));
                 }
             }
         }
         return distanceMatrix;
     }
 
-    public String getDistance(HopperOrder point1, HopperOrder point2){
+    public Float getDistance(HopperOrder point1, HopperOrder point2){
         OkHttpClient client = new OkHttpClient();
         String distance = null;
         try {
@@ -45,7 +44,7 @@ public class MatrixProcessor {
         }catch(IOException ex){
             ex.printStackTrace();
         }
-        return distance;
+        return Float.parseFloat(distance);
     }
 
     public static void printMatrix(double[][]distanceMatrix){

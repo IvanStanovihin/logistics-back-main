@@ -30,13 +30,14 @@ public class RoutingService {
         double[][] distanceMatrix = matrixProcessor.getDistanceMatrix(points);
         MatrixProcessor.printMatrix(distanceMatrix);
         ArrayList<HopperOrder>greedyOrders = greedyService.calculateRoute(rawOrder, distanceMatrix);
-        greedyOrders.stream().forEach(System.out::println);
+        greedyOrders.forEach(System.out::println);
         System.out.println("Суммарное расстояние: " + greedyService.getSummaryDistance());
         ArrayList<OrderList> splitedOrders = weightService.splitByWeight(drivers, greedyOrders);
         System.out.println("Маршрутные листы разбитые по весу: ");
         Stream.of(splitedOrders).forEach(System.out::println);
         return splitedOrders;
     }
+
 
 
     private ArrayList<HopperDriver>getTestDrivers(){

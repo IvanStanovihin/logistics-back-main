@@ -41,7 +41,7 @@ public class Order {
             inverseJoinColumns = { @JoinColumn(name = "address_id") })
     private Set<Address> addresses;
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, cascade = CascadeType.REMOVE)
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
@@ -49,7 +49,7 @@ public class Order {
     private String comment;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "order", cascade = CascadeType.REMOVE)
     private Set<Route> routes;
 
     @Transient

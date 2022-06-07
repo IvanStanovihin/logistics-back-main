@@ -15,7 +15,17 @@ public class OrderList {
 
 
     public OrderList() {
+//        this.groupedOrder.add(ApplicationConfig.START_ORDER);
+    }
+
+    public OrderList(ArrayList<HopperOrder>orders, Driver driver) {
         this.groupedOrder.add(ApplicationConfig.START_ORDER);
+        groupedOrder.addAll(orders);
+    }
+
+    public void addStartPoint(){
+        this.groupedOrder.add(0, ApplicationConfig.START_ORDER);
+        this.groupedOrder.add(groupedOrder.size() , ApplicationConfig.START_ORDER);
     }
 
     public OrderList(Long id, ArrayList<HopperOrder> groupedOrder, HopperDriver driver, Double summaryWeight) {
@@ -61,5 +71,15 @@ public class OrderList {
 
     public void setSummaryWeight(Double summaryWeight) {
         this.summaryWeight = summaryWeight;
+    }
+
+    @Override
+    public String toString() {
+        return "OrderList{" +
+                "id=" + id +
+                ", groupedOrder=" + groupedOrder +
+                ", driver=" + driver +
+                ", summaryWeight=" + summaryWeight +
+                '}';
     }
 }

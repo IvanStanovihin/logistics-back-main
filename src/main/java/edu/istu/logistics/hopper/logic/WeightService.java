@@ -23,7 +23,7 @@ public class WeightService {
         ArrayList<HopperDriver>driversForSplitting = new ArrayList<>(Arrays.asList(freeDrivers));
         int pointer = 0;
         while(ordersForSplitting.size() != 0){
-            ordersForSplitting.stream().forEach(System.out::println);
+            ordersForSplitting.forEach(System.out::println);
             HopperDriver currentDriver = getDriver(freeDrivers);
             OrderList orderList = getOrdersList(currentDriver, ordersForSplitting);
             allOrderList.add(orderList);
@@ -53,7 +53,9 @@ public class WeightService {
             orderWeight = currentOrder.getCargoWeight();
         }
         orderList.setDriver(driver);
-        orderList.addOrder(ApplicationConfig.START_ORDER);
+        //TODO
+//        orderList.addStartPoint();
+//        orderList.addOrder(ApplicationConfig.START_ORDER);
         return orderList;
     }
 

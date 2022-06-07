@@ -28,13 +28,14 @@ public class BranchAndBoundService {
         weightService = new WeightService();
     }
 
-    public OrderList[] calculate(RouteRequest request){
+    public OrderList[] calculateBranchAndBounds(RouteRequest request){
         HopperOrder[] rawOrders = request.getRawOrders();
         HopperDriver[] freeDrivers = request.getDrivers();
         double[][] distanceMatrix = matrixProcessor.getDistanceMatrix(new ArrayList(Arrays.asList(rawOrders)));
         Stack<Integer>optimizedPath = algorithmEngine.start(distanceMatrix);
         ArrayList<HopperOrder>optimizedOrders = moveOrders(rawOrders, optimizedPath);
         ArrayList<OrderList>optimizedOrderLists = weightService.splitByWeight(freeDrivers, optimizedOrders);
+        optimizedOrderLists.forEach(OrderList::addStartPoint);
         OrderList[]orderLists = new OrderList[optimizedOrderLists.size()];
         return optimizedOrderLists.toArray(orderLists);
 

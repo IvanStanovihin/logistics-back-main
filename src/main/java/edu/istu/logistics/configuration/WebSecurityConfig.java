@@ -21,7 +21,7 @@ import java.util.Collections;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final String[] ALLOWED_GUEST_POST = new String[] { "/api/login", "/api/hopper/calculateOrderLists",
-    "/api/hopper/branchAndBound"};
+    "/api/hopper/branchAndBound", "/api/hopper/routeAnnealing"};
 
     private final UserDetailsServiceImpl userDetailsService;
 
